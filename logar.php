@@ -1,6 +1,17 @@
 <?php
 include_once 'conexao.php'; // Inclui o arquivo de conexão
 
+
+// Permite o acesso de qualquer origem
+header("Access-Control-Allow-Origin: *");
+
+// Permite métodos como GET, POST, PUT, DELETE
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+// Permite cabeçalhos personalizados
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+
 // Captura e sanitiza os dados recebidos via POST
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $senha = isset($_POST['senha']) ? trim($_POST['senha']) : '';

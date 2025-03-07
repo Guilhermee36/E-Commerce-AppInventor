@@ -1,5 +1,13 @@
 <?php
     include_once('conexao.php');
+    // Permite o acesso de qualquer origem
+header("Access-Control-Allow-Origin: *");
+
+// Permite métodos como GET, POST, PUT, DELETE
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+// Permite cabeçalhos personalizados
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
     $nome = $_POST['nome'];
     $email = $_POST['email'];
