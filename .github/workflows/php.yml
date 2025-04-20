@@ -25,3 +25,17 @@ jobs:
 
     - name: Push imagem Docker
       run: docker push daniel0208/app-inventor
+  
+  deploy:
+    needs: build
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull ddaniel0208/app-inventor:latest
+
+      - name: Remover container antigo (se existir)
+        run: docker rm -f app-inventor || true
+
+      - name: Subir o container
+        run: docker run -d --name app-inventor -p 8080:80 daniel0208/app-inventor:latest
