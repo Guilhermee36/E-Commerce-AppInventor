@@ -1,31 +1,14 @@
 <?php
-include_once 'conexao.php'; // Inclui o arquivo de conexão
+include_once 'conexao.php';
 
+$senha_cliente=$_POST['senha'];
+$email_cliente=$_POST['email'];
 
-// Permite o acesso de qualquer origem
-header("Access-Control-Allow-Origin: *");
+$sql = $dbcon->query("SELECT * FROM tb_cliente WHERE email_cliente='$email_cliente' AND senha_cliente='$senha_cliente';");
 
-// Permite métodos como GET, POST, PUT, DELETE
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-// Permite cabeçalhos personalizados
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
-
-// Captura e sanitiza os dados recebidos via POST
-$email = isset($_POST['email']) ? trim($_POST['email']) : '';
-$senha = isset($_POST['senha']) ? trim($_POST['senha']) : '';
-
-// Prepara a consulta para evitar SQL Injection
-$sql = $dbcon->prepare("SELECT * FROM clientelogin WHERE email=? AND senha=?");
-$sql->bind_param("ss", $email, $senha);
-$sql->execute();
-$result = $sql->get_result();
-
-// Verifica se encontrou um usuário com os dados informados
-if ($result->num_rows > 0) {
-    echo str_replace(["\r", "\n"], '', "login_ok");
+if (mysqli_num_rows($sql) > 0) {
+    echo "oi";
+    echo "tamojunto";
 } else {
-    echo str_replace(["\r", "\n"], '', "login_erro");
+    echo "login_erro";
 }
-?>
