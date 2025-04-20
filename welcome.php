@@ -30,7 +30,7 @@ echo '
 </head>
 <body>
     <h1>Seja bem-vindo ao servidor do nosso e-comerce <br/> <em> App Inventor! <em/></h1>
-    <p>Quaisquer dúvidas entre em contato com o guilherme no génio.</p>
+    <p>Quaisquer dúvidas entre em contato com o guilherme o génio.</p>
 </body>
 </html>
 ';
