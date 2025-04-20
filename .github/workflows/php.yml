@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Pull image from Docker Hub
-        run: docker pull ddaniel0208/app-inventor:latest
+        run: docker pull daniel0208/app-inventor:latest
 
       - name: Remover container antigo (se existir)
         run: docker rm -f app-inventor || true
